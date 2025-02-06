@@ -3,10 +3,12 @@ services:
   db: 
     image: postgres
     environment:
-      POSTGRES_DB: db123
-      POSTGRES_USER: user123
-      POSTGRES_PASSWORD: password123
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
   app:
     image: my-node-app
     ports:
       - 13000:3000
+    env_file:
+      - .env
